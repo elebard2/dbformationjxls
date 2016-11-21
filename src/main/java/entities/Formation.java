@@ -1,5 +1,47 @@
 package entities;
 
-public class Formation {
+import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Formation {
+	
+	@Id 
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer formationID = null;
+	
+	String title;
+	String location;
+	Date expectedStartingDate;
+	Date realStartingDate;
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public Date getExpectedStartingDate() {
+		return expectedStartingDate;
+	}
+	public void setExpectedStartingDate(Date expectedStartingDate) {
+		this.expectedStartingDate = expectedStartingDate;
+	}
+	public Date getRealStartingDate() {
+		return realStartingDate;
+	}
+	public void setRealStartingDate(Date realStartingDate) {
+		this.realStartingDate = realStartingDate;
+	}
+	
 }

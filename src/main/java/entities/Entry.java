@@ -60,12 +60,12 @@ public class Entry {
 			this.employee = new Employee();
 			this.employee.setFirstName(stupidentry.firstName);
 			this.employee.setLastName(stupidentry.lastName);
-			this.employee.setAgenceID(Integer.valueOf(stupidentry.agenceID));
+			this.employee.setAgenceID(stupidentry.agenceID);
 		} else {
 			this.employee = new Employee();
 			this.employee.setFirstName("!INVALID");
 			this.employee.setLastName("!INVALID");
-			this.employee.setAgenceID(-1);
+			this.employee.setAgenceID("!INVALID");
 		}
 
 		try {

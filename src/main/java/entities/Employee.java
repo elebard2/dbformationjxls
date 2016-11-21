@@ -1,10 +1,20 @@
 package entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Employee {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer employeeID;
 	
 	String lastName;
 	String firstName;
-	Integer agenceID;
+	String agenceID;
 	
 	public String getLastName() {
 		return lastName;
@@ -18,15 +28,15 @@ public class Employee {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	public Integer getAgenceID() {
+	public String getAgenceID() {
 		return agenceID;
 	}
-	public void setAgenceID(Integer agenceID) {
+	public void setAgenceID(String agenceID) {
 		this.agenceID = agenceID;
 	}
 	
 	public String toString(){
-		return this.firstName + " " + this.lastName +  " " + this.agenceID;
+		return this.employeeID + " " + this.firstName + " " + this.lastName +  " " + this.agenceID;
 	}
 
 }
