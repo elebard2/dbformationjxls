@@ -19,4 +19,24 @@ public class FormationRequest {
 	@ManyToOne
 	Formation formation;
 
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	public Formation getFormation() {
+		return formation;
+	}
+
+	public void setFormation(Formation formation) {
+		this.formation = formation;
+	}
+	
+	public String toString(){
+		return this.employee + " " + this.formationRequestID;
+	}
+
 }

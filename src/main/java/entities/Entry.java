@@ -17,7 +17,7 @@ public class Entry {
 	Date realStartingDate;
 	String formationTitle;
 	String formationLocation;
-	Employee employee;
+	StupidEmployee employee;
 	String formationProvider;
 
 	public Entry() {
@@ -57,12 +57,12 @@ public class Entry {
 		}
 
 		if (stupidentry.lastName != null && stupidentry.firstName != null && stupidentry.agenceID != null) {
-			this.employee = new Employee();
+			this.employee = new StupidEmployee();
 			this.employee.setFirstName(stupidentry.firstName);
 			this.employee.setLastName(stupidentry.lastName);
 			this.employee.setAgenceID(stupidentry.agenceID);
 		} else {
-			this.employee = new Employee();
+			this.employee = new StupidEmployee();
 			this.employee.setFirstName("!INVALID");
 			this.employee.setLastName("!INVALID");
 			this.employee.setAgenceID("!INVALID");
@@ -155,11 +155,11 @@ public class Entry {
 		this.formationLocation = formationLocation;
 	}
 
-	public Employee getEmployee() {
+	public StupidEmployee getEmployee() {
 		return employee;
 	}
 
-	public void setEmployee(Employee employee) {
+	public void setEmployee(StupidEmployee employee) {
 		this.employee = employee;
 	}
 
