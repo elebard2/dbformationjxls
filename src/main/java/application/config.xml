@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<workbook>
+	<worksheet idx="0">
+		<loop startRow="0" endRow="0" items="stupidentries" var="stupidentry"
+			varType="entities.StupidEntry">
+			<section startRow="0" endRow="0">
+				<mapping row="1" col="0">stupidentry.formationMonth</mapping>
+				<mapping row="1" col="1">stupidentry.agenceID</mapping>
+				<mapping row="1" col="2">stupidentry.formationDuration</mapping>
+				<mapping row="1" col="3">stupidentry.expectedStartingDate</mapping>
+				<mapping row="1" col="4">stupidentry.realStartingDate</mapping>
+				<mapping row="1" col="5">stupidentry.formationTitle</mapping>
+				<mapping row="1" col="6">stupidentry.formationLocation</mapping>
+				<mapping row="1" col="7">stupidentry.lastName</mapping>
+				<mapping row="1" col="8">stupidentry.firstName</mapping>
+				<mapping row="1" col="9">stupidentry.formationProvider</mapping>
+			</section>
+			<loopbreakcondition>
+				<rowcheck offset="0">
+					<cellcheck offset="0"></cellcheck>
+					<cellcheck offset="1"></cellcheck>
+					<cellcheck offset="2"></cellcheck>
+					<cellcheck offset="3"></cellcheck>
+					<cellcheck offset="4"></cellcheck>
+					<cellcheck offset="5"></cellcheck>
+					<cellcheck offset="6"></cellcheck>
+					<cellcheck offset="7"></cellcheck>
+					<cellcheck offset="8"></cellcheck>
+					<cellcheck offset="9"></cellcheck>
+				</rowcheck>
+			</loopbreakcondition>
+		</loop>
+	</worksheet>
+</workbook>
