@@ -1,4 +1,4 @@
-package entities;
+package jxlsimportation;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -29,13 +29,13 @@ public class Entry {
 		try {
 			setFormationMonth(Integer.valueOf(stupidentry.formationMonth));
 		} catch (Exception e) {
-			setFormationMonth(-1);
+			setFormationMonth(null);
 		}
 
 		try {
 			setFormationDuration(new BigDecimal(stupidentry.formationDuration));
 		} catch (Exception e) {
-			setFormationDuration(new BigDecimal("-1"));
+			setFormationDuration(new BigDecimal("0"));
 			;
 		}
 
@@ -43,17 +43,16 @@ public class Entry {
 			double xlsDate = Double.valueOf(stupidentry.expectedStartingDate);
 			this.expectedStartingDate = DateUtil.getJavaDate(xlsDate);
 		} catch (Exception e) {
-			// TODO returns 1st january 1970 if the date is not properly entered
-			setExpectedStartingDate(isoFormat.parse("01-01-1970"));
+			// no date if nothing is written
+			setExpectedStartingDate(null);
 		}
 
 		try {
 			double xlsDate = Double.valueOf(stupidentry.realStartingDate);
 			this.realStartingDate = DateUtil.getJavaDate(xlsDate);
 		} catch (Exception e) {
-			// TODO returns 1st january 1970 if the date is not properly entered
-			// or if the employee didn't go
-			setRealStartingDate(isoFormat.parse("01-01-1970"));
+			// no date if it was not written or if the employee didn't go
+			setRealStartingDate(null);
 		}
 
 		if (stupidentry.lastName != null && stupidentry.firstName != null && stupidentry.agenceID != null) {

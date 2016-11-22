@@ -1,6 +1,4 @@
-package entities;
-
-import java.util.Date;
+package jxlsimportation;
 
 public class StupidEntry {
 

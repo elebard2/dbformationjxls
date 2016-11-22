@@ -18,17 +18,7 @@ public class Formation {
 	String title;
 	String location;
 	Date expectedStartingDate;
-	Date realStartingDate;
-	BigDecimal duration;
 	String formationprovider;
-
-	public BigDecimal getDuration() {
-		return duration;
-	}
-
-	public void setDuration(BigDecimal duration) {
-		this.duration = duration;
-	}
 
 	public String getFormationprovider() {
 		return formationprovider;
@@ -62,17 +52,10 @@ public class Formation {
 		this.expectedStartingDate = expectedStartingDate;
 	}
 
-	public Date getRealStartingDate() {
-		return realStartingDate;
-	}
-
-	public void setRealStartingDate(Date realStartingDate) {
-		this.realStartingDate = realStartingDate;
-	}
 
 	public String toString() {
-		return this.duration + " " + this.expectedStartingDate + " " + this.formationprovider + " " + this.location
-				+ " " + this.realStartingDate + " " + this.title;
+		return this.expectedStartingDate + " " + this.formationprovider + " " + this.location
+				+ " " + this.title;
 	}
 
 }

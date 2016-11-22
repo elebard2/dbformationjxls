@@ -1,0 +1,17 @@
+Projet JXLS - Formation
+
+Utilisateur final : "big boss formation"
+
+Site Web :
+- choix de formations
+- historique des formations
+- alerte sur les formations en retard
+- CRUD sur les formations
+
+Objectif 1 :
+écrire un programme en Java pour
+	1°) Appeler un DAO qui lit le fichier excel et le transforme en une collection Java
+	2°) Définir chaque élément des objets de la collection (1ère case = mois de formation, 2ème case = id du centre, etc.)
+	3°) Envoyer les données pour qu'elles soient écrites dans la base de données
+	
+Règle : si pas de nom, entrée non valide

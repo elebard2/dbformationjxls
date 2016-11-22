@@ -2,7 +2,7 @@
 <workbook>
 	<worksheet idx="0">
 		<loop startRow="0" endRow="0" items="stupidentries" var="stupidentry"
-			varType="entities.StupidEntry">
+			varType="jxlsimportation.StupidEntry">
 			<section startRow="0" endRow="0">
 				<mapping row="1" col="0">stupidentry.formationMonth</mapping>
 				<mapping row="1" col="1">stupidentry.agenceID</mapping>
