@@ -93,7 +93,9 @@ public class App {
 				List<Employee> resultlist = (List<Employee>) query.getResultList();
 
 				if (resultlist.isEmpty()) {
-					e.persist(employee);
+					if(employee.getFirstName()!="!INVALID"){
+						e.persist(employee);
+					}
 					return employee;
 				}
 				return resultlist.get(0);
@@ -103,23 +105,25 @@ public class App {
 			formationrequest.setEmployee(employeeBdd);
 			formationrequest.setFormation(formationBdd);
 
-			EmFactory.transaction(e -> {
+			if(employeeBdd.getFirstName()!="!INVALID"){
+				EmFactory.transaction(e -> {
 
-				TypedQuery<FormationRequest> query = e.createQuery(
-						"SELECT fr FROM FormationRequest fr WHERE fr.employee=:employee AND fr.formation = :formation",
-						FormationRequest.class);
+					TypedQuery<FormationRequest> query = e.createQuery(
+							"SELECT fr FROM FormationRequest fr WHERE fr.employee=:employee AND fr.formation = :formation",
+							FormationRequest.class);
 
-				query = query.setParameter("employee", formationrequest.getEmployee())
-						.setParameter("formation", formationrequest.getFormation());
+					query = query.setParameter("employee", formationrequest.getEmployee())
+							.setParameter("formation", formationrequest.getFormation());
 
-				List<FormationRequest> resultlist = (List<FormationRequest>) query.getResultList();
+					List<FormationRequest> resultlist = (List<FormationRequest>) query.getResultList();
 
-				if (resultlist.isEmpty()) {
-					e.persist(formationrequest);
-				}
-				return null;
+					if (resultlist.isEmpty()) {
+							e.persist(formationrequest);
+					}
+					return null;
 
-			});
+				});
+			}
 
 		}
 
