@@ -23,6 +23,7 @@ import entities.FormationRequest;
 import entities.StupidEntry;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import jpa.EmFactory;
 
@@ -34,9 +35,6 @@ public class App {
 		App app = new App();
 
 		List<Entry> entries = app.xlsReadFromFile();
-
-		EntityManager em = EmFactory.createEntityManager();
-		em.getTransaction().begin();
 
 		System.out.println("  ========== STARTING WORK ======= ");
 
@@ -51,7 +49,9 @@ public class App {
 
 			EmFactory.transaction(e -> {
 
-				String query = "SELECT f FROM Formation f WHERE f.title = :title";
+				TypedQuery<Formation> query = e.createQuery("SELECT F FROM Formation F WHERE F.title=:title",
+						Formation.class);
+
 
 				/**
 				 * AND f.location = :location AND f.expectedStartingDate =
@@ -59,11 +59,13 @@ public class App {
 				 * :realStartingDate and f.duration =:duration AND
 				 * f.formationprovider = :formationprovider
 				 */
-				
-				System.out.println(formation);
 
-				List list = e.createQuery(query).setParameter("title", formation.getTitle()).getResultList();
-				
+				System.out.println(formation.getTitle());
+
+				query = query.setParameter("title", formation.getTitle());
+
+				List<Formation> resultlist = (List<Formation>) query.getResultList();
+
 				/**
 				 * .setParameter("location", formation.getLocation())
 				 * .setParameter("expectedStartingDate",
@@ -73,8 +75,10 @@ public class App {
 				 * formation.getFormationprovider())
 				 */
 
-				if (list.isEmpty()) {
-					em.persist(formation);
+				System.out.println("result : " + resultlist);
+
+				if (resultlist.isEmpty()) {
+					e.persist(formation);
 				}
 				return null;
 
@@ -88,11 +92,10 @@ public class App {
 			FormationRequest formationrequest = new FormationRequest();
 			formationrequest.setEmployee(employee);
 			formationrequest.setFormation(formation);
+			
 		}
 
-		em.getTransaction().commit();
-
-		em.close();
+		/** EmFactory.getInstance().close(); */
 
 	}
 

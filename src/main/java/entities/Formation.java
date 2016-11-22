@@ -71,8 +71,8 @@ public class Formation {
 	}
 
 	public String toString() {
-		return this.title + " " + this.expectedStartingDate + " " + this.duration + " " + this.location + " "
-				+ this.realStartingDate + " " + this.formationprovider;
+		return this.duration + " " + this.expectedStartingDate + " " + this.formationprovider + " " + this.location
+				+ " " + this.realStartingDate + " " + this.title;
 	}
 
 }
