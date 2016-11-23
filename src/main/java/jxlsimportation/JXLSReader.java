@@ -17,14 +17,13 @@ import org.jxls.reader.XLSReader;
 import org.xml.sax.SAXException;
 
 public class JXLSReader {
-	
+
 	public List<Entry> xlsReadFromFile(String xmlPath, String xlsPath) throws ParseException {
 
 		InputStream xmlConfig = null;
 
 		try {
-			xmlConfig = new BufferedInputStream(new FileInputStream(
-					xmlPath));
+			xmlConfig = new BufferedInputStream(new FileInputStream(xmlPath));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -51,8 +50,7 @@ public class JXLSReader {
 		InputStream xlsStream = null;
 
 		try {
-			xlsStream = new BufferedInputStream(
-					new FileInputStream(xlsPath));
+			xlsStream = new BufferedInputStream(new FileInputStream(xlsPath));
 			xlsReader.read(xlsStream, beans);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -70,13 +68,15 @@ public class JXLSReader {
 		List<Entry> entries = new ArrayList<Entry>();
 
 		for (int i = 0; i < stupidentries.size(); i++) {
-			Entry entry = new Entry(stupidentries.get(i));
-			entries.add(entry);
+			if(stupidentries.get(i).getFirstName()!=null&&stupidentries.get(i).getLastName()!=null&&stupidentries.get(i).getAgenceID()!=null){
+				Entry entry = new Entry(stupidentries.get(i));
+				entries.add(entry);
+			}
+
 		}
 
 		return entries;
 
 	}
-
 
 }

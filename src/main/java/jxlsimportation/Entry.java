@@ -41,7 +41,7 @@ public class Entry {
 
 		try {
 			double xlsDate = Double.valueOf(stupidentry.expectedStartingDate);
-			this.expectedStartingDate = DateUtil.getJavaDate(xlsDate);
+			setExpectedStartingDate(DateUtil.getJavaDate(xlsDate));
 		} catch (Exception e) {
 			// no date if nothing is written
 			setExpectedStartingDate(null);
@@ -49,18 +49,18 @@ public class Entry {
 
 		try {
 			double xlsDate = Double.valueOf(stupidentry.realStartingDate);
-			this.realStartingDate = DateUtil.getJavaDate(xlsDate);
+			setRealStartingDate(DateUtil.getJavaDate(xlsDate));
 		} catch (Exception e) {
 			// no date if it was not written or if the employee didn't go
 			setRealStartingDate(null);
 		}
 
-		if (stupidentry.lastName != null && stupidentry.firstName != null && stupidentry.agenceID != null) {
+		try {
 			this.employee = new StupidEmployee();
 			this.employee.setFirstName(stupidentry.firstName);
 			this.employee.setLastName(stupidentry.lastName);
 			this.employee.setAgenceID(stupidentry.agenceID);
-		} else {
+		} catch (Exception e) {
 			this.employee = new StupidEmployee();
 			this.employee.setFirstName("!INVALID");
 			this.employee.setLastName("!INVALID");
@@ -69,39 +69,46 @@ public class Entry {
 
 		try {
 
-			this.formationTitle = stupidentry.formationTitle;
+			setFormationTitle(stupidentry.formationTitle);
 
 		} catch (Exception e) {
 
-			this.formationLocation = "!INVALID";
+			setFormationTitle("!INVALID");
 
 		}
 
 		try {
-
-			this.formationLocation = stupidentry.formationLocation;
+			
+			if(stupidentry.formationLocation!=null) {
+				
+				setFormationLocation(stupidentry.formationLocation);
+				
+			} else {
+				
+				setFormationLocation("undetermined");
+			}
 
 		} catch (Exception e) {
 
-			this.formationLocation = "undetermined";
-
+			setFormationLocation("undetermined");
+			
 		}
 
 		try {
 
 			if (stupidentry.formationProvider != null) {
 
-				this.formationProvider = stupidentry.formationProvider;
+				setFormationProvider(stupidentry.formationProvider);
 
 			} else {
-				
-				this.formationProvider = "undetermined";
-				
+
+				setFormationProvider("undetermined");
+
 			}
 
 		} catch (Exception e) {
 
-			this.formationProvider = "undetermined";
+			setFormationProvider("undetermined");
 
 		}
 	}

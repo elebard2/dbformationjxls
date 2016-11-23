@@ -22,7 +22,8 @@ public class FormationRequestDAO {
 		FormationRequest formationrequestBdd = EmFactory.transaction(e -> {
 
 			TypedQuery<FormationRequest> query = e.createQuery(
-					"SELECT fr FROM FormationRequest fr WHERE fr.employee=:employee AND fr.formation = :formation AND fr.duration = :duration AND fr.realStartingDate = :realStartingDate",
+					"SELECT fr FROM FormationRequest fr WHERE fr.employee=:employee AND fr.formation = :formation AND fr.duration = :duration AND "
+					+ "((:realStartingDate is null and fr.realStartingDate is null) or (:realStartingDate is not null and fr.realStartingDate=:realStartingDate))",
 					FormationRequest.class);
 
 			query = query.setParameter("employee", formationrequest.getEmployee())

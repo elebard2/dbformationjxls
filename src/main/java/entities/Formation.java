@@ -1,6 +1,5 @@
 package entities;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -52,10 +51,8 @@ public class Formation {
 		this.expectedStartingDate = expectedStartingDate;
 	}
 
-
 	public String toString() {
-		return this.expectedStartingDate + " " + this.formationprovider + " " + this.location
-				+ " " + this.title;
+		return this.expectedStartingDate + " " + this.formationprovider + " " + this.location + " " + this.title;
 	}
 
 }

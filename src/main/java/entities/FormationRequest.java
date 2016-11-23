@@ -21,7 +21,7 @@ public class FormationRequest {
 
 	@ManyToOne
 	Formation formation;
-	
+
 	Date realStartingDate;
 	BigDecimal duration;
 
@@ -58,7 +58,7 @@ public class FormationRequest {
 	}
 
 	public String toString() {
-		return this.duration + " "+ this.employee + " " + this.formationRequestID + " " + this.realStartingDate;
+		return this.duration + " " + this.employee + " " + this.formationRequestID + " " + this.realStartingDate;
 	}
 
 }
